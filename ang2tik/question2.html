@@ -207,32 +207,40 @@ input::placeholder {
         <div class="input-field">
             <input type="text" id="birth-date" placeholder="Day/Month/Year">
         </div>
-        <a href="loading.html" id="submit-btn" class="submit-btn" style="pointer-events: none;">SUBMIT MY ANSWER</a>
-        <br>
-    </div>
+<a href="loading.html" id="submit-btn" class="submit-btn" style="pointer-events: none;">SUBMIT MY ANSWER</a>
+<br>
 
-    <script>
-        const inputField = document.getElementById('birth-date');
-        const submitBtn = document.getElementById('submit-btn');
+<script>
+    const inputField = document.getElementById('birth-date');
+    const submitBtn = document.getElementById('submit-btn');
 
-        inputField.addEventListener('input', function() {
-            // Habilita o botão apenas se houver algo digitado
-            if (inputField.value.trim() !== "") {
-                submitBtn.style.pointerEvents = 'auto';
-                submitBtn.style.opacity = '1';
-            } else {
-                submitBtn.style.pointerEvents = 'none';
-                submitBtn.style.opacity = '0.6';
-            }
-        });
-            // Preserve URL parameters and redirect
-    submitBtn.addEventListener('click', () => {
-        // Get current URL parameters
-        const params = new URLSearchParams(window.location.search);
-        // Redirect to the next page, appending the original parameters
-        window.location.href = "loading.html?" + params.toString();
+    inputField.addEventListener('input', function() {
+        // Habilita o botão apenas se houver algo digitado
+        if (inputField.value.trim() !== "") {
+            submitBtn.style.pointerEvents = 'auto';
+            submitBtn.style.opacity = '1';
+        } else {
+            submitBtn.style.pointerEvents = 'none';
+            submitBtn.style.opacity = '0.6';
+        }
     });
-    </script>
+
+    // Preserve URL parameters and redirect
+    submitBtn.addEventListener('click', (e) => {
+        // Impede o link de seguir seu comportamento padrão
+        e.preventDefault();
+
+        // Captura os parâmetros da URL atual
+        const params = new URLSearchParams(window.location.search);
+        
+        // Adiciona os parâmetros ao link de destino (loading.html)
+        const newUrl = "loading.html?" + params.toString();
+
+        // Redireciona para a nova URL com os parâmetros
+        window.location.href = newUrl;
+    });
+</script>
+
 
 
 </body></html>
