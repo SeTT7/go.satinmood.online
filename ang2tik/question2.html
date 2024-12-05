@@ -225,6 +225,13 @@ input::placeholder {
                 submitBtn.style.opacity = '0.6';
             }
         });
+            // Preserve URL parameters and redirect
+    submitBtn.addEventListener('click', () => {
+        // Get current URL parameters
+        const params = new URLSearchParams(window.location.search);
+        // Redirect to the next page, appending the original parameters
+        window.location.href = "loading.html?" + params.toString();
+    });
     </script>
 
 
