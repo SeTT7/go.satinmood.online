@@ -101,7 +101,20 @@
     }
 
     // Start animation when the page loads
-    window.onload = animateProgress;
+   window.onload = function() {
+    // Captura os parâmetros da URL
+    const params = new URLSearchParams(window.location.search);
+    
+    // Exemplo de como acessar um parâmetro específico
+    const birthDate = params.get('birth-date');  // Caso o parâmetro seja 'birth-date'
+    
+    // Faça algo com os parâmetros, como exibir ou usá-los conforme necessário
+    console.log('Birth Date:', birthDate);  // Para debug, se necessário
+    
+    // Inicia a animação da barra de progresso
+    animateProgress();
+};
+
 </script>
 
 
